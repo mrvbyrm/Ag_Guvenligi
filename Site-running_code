@@ -1,0 +1,46 @@
+from flask import Flask, request, render_template_string
+
+app = Flask(_name_)
+
+@app.route("/")
+def login():
+    return render_template_string("""
+        <html>
+        <head>
+            <title>Instagram • Giriş Yap</title>
+            <style>
+                body { font-family: sans-serif; background: #fafafa; text-align: center; margin-top: 100px; }
+                form { display: inline-block; background: white; padding: 40px; border: 1px solid #ccc; }
+                input { margin: 10px 0; padding: 10px; width: 250px; }
+                input[type=submit] { background-color: #3897f0; color: white; border: none; cursor: pointer; }
+            </style>
+        </head>
+        <body>
+            <form method="post" action="/login">
+                <h2>Instagram</h2>
+                <input name="username" placeholder="Telefon numarası, kullanıcı adı veya e-posta"><br>
+                <input name="password" type="password" placeholder="Şifre"><br>
+                <input type="submit" value="Giriş Yap">
+            </form>
+        </body>
+        </html>
+    """)
+
+@app.route("/login", methods=["POST"])
+def do_login():
+    username = request.form.get("username")
+    return render_template_string(f"""
+        <html>
+        <head><title>Simülasyon Tamamlandı</title></head>
+        <body style="font-family: sans-serif; text-align: center; margin-top: 100px;">
+            <h2>⚠️ Bu bir simülasyondur!</h2>
+            <p>Girdiğiniz bilgiler kaydedilmemiştir.</p>
+            <p>Bu tarz sahte sayfalara giriş yapmanız durumunda bilgileriniz kötü niyetli kişilerce çalınabilir.</p>
+            <p><strong>Girdiğiniz kullanıcı adı:</strong> {username}</p>
+            <p>Lütfen gerçek sitelere giriş yapmadan önce adres çubuğunu kontrol edin.</p>
+        </body>
+                </html>
+    """)
+
+if _name_ == "_main_":
+    app.run(debug=True)
