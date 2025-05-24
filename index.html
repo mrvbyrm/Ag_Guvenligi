@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ücretsiz Wi-Fi - Simülasyon</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="register-box" id="registerBox">
+    <h2>Üye Ol</h2>
+    <p>Ücretsiz Wi-Fi için aşağıdaki bilgileri doldurun.</p>
+    <form id="registerForm">
+      <input type="text" placeholder="Ad Soyad" required>
+      <input type="text" placeholder="T.C. Kimlik No" required>
+      <input type="tel" placeholder="Cep Telefonu" required>
+      <input type="email" placeholder="E-posta Adresi" required>
+      <input type="password" placeholder="Şifre" required>
+      <button type="submit">Devam Et</button>
+    </form>
+  </div>
+
+  <div class="login-box" id="loginBox" style="display:none;">
+    <h2>Giriş Yap</h2>
+    <p>Hesabınızla giriş yapınız.</p>
+    <form id="loginForm">
+      <input type="email" placeholder="E-posta adresi" required>
+      <input type="password" placeholder="Şifre" required>
+      <button type="submit">Bağlan</button>
+    </form>
+  </div>
+
+  <div class="warning-box" id="warningBox" style="display:none;">
+    <h2>⚠️ Simülasyon Tamamlandı</h2>
+    <p>Bu bir siber güvenlik simülasyonuydu.<br>Gerçek bir saldırgan olsaydı az önce girdiğiniz tüm bilgiler ele geçirilmiş olurdu.</p>
+    <p class="note">Lütfen bu tür formlara kişisel bilgilerinizi girmeden önce doğruluğundan emin olun.</p>
+  </div>
+</body>
+</html>
