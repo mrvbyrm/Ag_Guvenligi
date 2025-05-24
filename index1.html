@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sahteyi Bul - Link Oyunu</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Sahteyi Bul! 🔗</h1>
+    <div class="controls">
+      <label for="difficulty">Zorluk:</label>
+      <select id="difficulty">
+        <option value="easy">Kolay</option>
+        <option value="medium">Orta</option>
+        <option value="hard">Zor</option>
+      </select>
+      <button onclick="startGame()">Başla</button>
+      <div id="timer">⏱️ 30</div>
+    </div>
+    <div id="link-container"></div>
+    <div id="score"></div>
+    <div id="explanation"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
