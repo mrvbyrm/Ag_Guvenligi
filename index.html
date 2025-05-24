@@ -1,254 +1,40 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Renkli Kart Quiz Çekilişi</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f4f8;
-      padding: 30px;
-      text-align: center;
-    }
-    .card {
-      width: 280px;
-      height: 140px;
-      margin: 20px auto;
-      border-radius: 12px;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .option-btn {
-      display: inline-block;
-      margin: 10px 20px;
-      padding: 12px 25px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 8px;
-      border: none;
-      background-color: #3498db;
-      color: white;
-      transition: background-color 0.3s ease;
-    }
-    .option-btn:hover {
-      background-color: #2980b9;
-    }
-    #feedback {
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 20px;
-    }
-    #drawBtn {
-      margin-top: 30px;
-      padding: 12px 30px;
-      font-size: 18px;
-      background-color: #27ae60;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: none;
-      transition: background-color 0.3s ease;
-    }
-    #drawBtn:hover {
-      background-color: #1e8449;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ücretsiz Wi-Fi - Simülasyon</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-
-<h1>🎴 Renkli Kart Quiz Çekilişi</h1>
-
-<div id="cardContainer"></div>
-
-<div id="questionContainer" style="display: none;">
-  <p id="questionText" style="font-size: 22px; margin-bottom: 20px;"></p>
-  <button class="option-btn" id="option1" onclick="selectAnswer(1)"></button>
-  <button class="option-btn" id="option2" onclick="selectAnswer(2)"></button>
-
-  <p id="feedback"></p>
-  <button id="drawBtn" onclick="submitToDraw()">Çekilişe Katıl</button>
-</div>
-
-<button onclick="drawCard()">Kart Seç 🎴</button>
-
-<script>
-  const questions = [
-    {
-      color: 'orange',
-      title: 'Kart 1',
-      question: 'Dünyanın en büyük okyanusu hangisidir?',
-      options: ['Pasifik Okyanusu', 'Atlas Okyanusu'],
-      answerIndex: 1
-    },
-    {
-      color: 'purple',
-      title: 'Kart 2',
-      question: 'Hangi renk güneşi temsil eder?',
-      options: ['Sarı', 'Mavi'],
-      answerIndex: 1
-    },
-    {
-      color: 'green',
-      title: 'Kart 3',
-      question: 'Türkiye’nin başkenti neresidir?',
-      options: ['Ankara', 'İstanbul'],
-      answerIndex: 1
-    },
-    {
-      color: 'blue',
-      title: 'Kart 4',
-      question: 'Hangi meyve turuncu renktedir?',
-      options: ['Portakal', 'Elma'],
-      answerIndex: 1
-    },
-    {
-      color: 'red',
-      title: 'Kart 5',
-      question: 'Kaç mevsim vardır?',
-      options: ['4', '3'],
-      answerIndex: 1
-    },
-    {
-      color: 'teal',
-      title: 'Kart 6',
-      question: 'Güneş doğudan mı batıdan mı doğar?',
-      options: ['Doğudan', 'Batıdan'],
-      answerIndex: 1
-    },
-    {
-      color: 'pink',
-      title: 'Kart 7',
-      question: 'En küçük gezegen hangisidir?',
-      options: ['Merkür', 'Jüpiter'],
-      answerIndex: 1
-    },
-    {
-      color: 'brown',
-      title: 'Kart 8',
-      question: 'Kediler kaç bacaklıdır?',
-      options: ['4', '2'],
-      answerIndex: 1
-    },
-    {
-      color: 'cyan',
-      title: 'Kart 9',
-      question: 'Türkiye’nin para birimi nedir?',
-      options: ['Türk Lirası', 'Euro'],
-      answerIndex: 1
-    },
-    {
-      color: 'magenta',
-      title: 'Kart 10',
-      question: 'Ay hangi gök cismidir?',
-      options: ['Uydu', 'Yıldız'],
-      answerIndex: 1
-    },
-  ];
-
-  let currentCard = null;
-  let answered = false;
-
-  function drawCard() {
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    currentCard = questions[randomIndex];
-    answered = false;
-
-    const cardDiv = document.getElementById('cardContainer');
-    cardDiv.innerHTML = `
-    <div class="card" style="background:${currentCard.color}">
-      ${currentCard.title}
-    </div>
-  `;
-
-    document.getElementById('questionText').textContent = currentCard.question;
-    document.getElementById('option1').textContent = currentCard.options[0];
-    document.getElementById('option2').textContent = currentCard.options[1];
-    document.getElementById('questionContainer').style.display = 'block';
-    document.getElementById('feedback').textContent = '';
-    document.getElementById('drawBtn').style.display = 'none';
-
-    document.getElementById('option1').disabled = false;
-    document.getElementById('option2').disabled = false;
-  }
-
-  function selectAnswer(selectedIndex) {
-    if (answered) return;
-
-    answered = true;
-    const feedback = document.getElementById('feedback');
-
-    if (selectedIndex === currentCard.answerIndex) {
-      feedback.textContent = '✅ Doğru cevap!';
-      feedback.style.color = 'green';
-      document.getElementById('drawBtn').style.display = 'inline-block';
-    } else {
-      feedback.textContent = `❌ Yanlış cevap! Doğru cevap: ${currentCard.options[currentCard.answerIndex - 1]}`;
-      feedback.style.color = 'red';
-    }
-
-    document.getElementById('option1').disabled = true;
-    document.getElementById('option2').disabled = true;
-  }
-
-  function submitToDraw() {
-    alert("🎉 Tebrikler! Çekilişe katıldınız. Kazananlar e-posta ile bilgilendirilecektir.");
-  }
-</script>
-
-<!-- Yorumlar Kutusu -->
-<div id="commentsBox">
-  <div id="commentsList">
-    <p> Hatice M.:Vaov, bu site ne kadar güvenilirmiş!🌟</p>
-    <p> Ayşe K.: İlk başta inanmamıştım ama gerçekmiş.🎯 Annem çok mutlu oldu.</p>
-    <p> Zülal H.:Kendimi gerçek bir yarışmada gibi hissettim!🏆</p>
-    <p> Esma A.:🎁500 TL hediye çeki geldi! Şoktayım 😱</p>
-    <p> Zehra G.: Bu kadar kolay mıydı ya?!</p>
-    <p> Ali B.: Bugün en az 5 arkadaşımı yönlendirdim!</p>
-    <p> Veli A.: Gerçekten ödeme yapıyorlar, denemelisiniz!🔥</p>
-    <p> Mehmet H.: Hesabıma para geçince anladım gerçek olduğunu.💳 </p>
-    <p> Fatma C.: Keşke daha önce fark etseydim bu siteyi!🧧</p>
-    <p> Osman U.: Hiç bu kadar kolay kazanmamıştım!🤩</p>
-    <p> Mine A.: Süper quiz olmuş, hem eğlen hem kazan!🎉</p>
-    <p> Yaren M.: Doğru cevapladım, hemen katıldım çekilişe!✅</p>
+  <div class="register-box" id="registerBox">
+    <h2>Üye Ol</h2>
+    <p>Ücretsiz Wi-Fi için aşağıdaki bilgileri doldurun.</p>
+    <form id="registerForm">
+      <input type="text" placeholder="Ad Soyad" required>
+      <input type="text" placeholder="T.C. Kimlik No" required>
+      <input type="tel" placeholder="Cep Telefonu" required>
+      <input type="email" placeholder="E-posta Adresi" required>
+      <input type="password" placeholder="Şifre" required>
+      <button type="submit">Devam Et</button>
+    </form>
   </div>
-</div>
 
-<style>
-  #commentsBox {
-    position: relative;
-    width: 600px;
-    height: 80px;
-    margin: 60px auto 0 auto;
-    overflow: hidden;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 10px;
-  }
+  <div class="login-box" id="loginBox" style="display:none;">
+    <h2>Giriş Yap</h2>
+    <p>Hesabınızla giriş yapınız.</p>
+    <form id="loginForm">
+      <input type="email" placeholder="E-posta adresi" required>
+      <input type="password" placeholder="Şifre" required>
+      <button type="submit">Bağlan</button>
+    </form>
+  </div>
 
-  #commentsList {
-    display: flex;
-    flex-direction: column;
-    animation: scrollComments 12s linear infinite;
-  }
-
-  #commentsList p {
-    font-size: 18px;
-    color: #333;
-    margin: 0;
-    padding: 8px 0;
-  }
-
-  @keyframes scrollComments {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-100%); }
-  }
-</style>
-
+  <div class="warning-box" id="warningBox" style="display:none;">
+    <h2>⚠️ Simülasyon Tamamlandı</h2>
+    <p>Bu bir siber güvenlik simülasyonuydu.<br>Gerçek bir saldırgan olsaydı az önce girdiğiniz tüm bilgiler ele geçirilmiş olurdu.</p>
+    <p class="note">Lütfen bu tür formlara kişisel bilgilerinizi girmeden önce doğruluğundan emin olun.</p>
+  </div>
 </body>
 </html>
