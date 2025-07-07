@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>500 TL Hediye Çekilişi!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="address-bar">http://hediye-cekilisi123.info/form</div>
+    <h1>🎁 500 TL Market Hediye Çekilişi!</h1>
+    <p>Çekilişe katılmak için aşağıdaki formu doldurun.</p>
+    <form id="phishingForm">
+      <input type="text" id="name" placeholder="Adınız Soyadınız" required />
+      <input type="email" id="email" placeholder="E-posta adresiniz" required />
+      <input type="tel" id="phone" placeholder="Telefon Numaranız" required />
+      <input type="text" id="address" placeholder="Adresiniz (isteğe bağlı)" />
+      <button type="submit">Katıl</button>
+    </form>
+
+    <button class="google-login-btn" onclick="googleLoginFake()">🔒 Google ile Giriş Yap</button>
+
+    <div class="comments-wrapper">
+      <div class="comments">
+        <div class="comment">👤 <b>Mehmet Y.</b> (2 saat önce): Gerçekten kazandım! Annem çok sevindi 🙌</div>
+        <div class="comment">👤 <b>Ayşe K.</b> (1 gün önce): İlk başta şüphelendim ama işe yarıyor 😍</div>
+        <div class="comment">👤 <b>Furkan D.</b> (3 gün önce): Bunu herkesle paylaşın, süper bir kampanya!</div>
+
+        <!-- Döngüsel görünmesi için yorumları tekrar ekliyoruz -->
+        <div class="comment">👤 <b>Mehmet Y.</b> (2 saat önce): Gerçekten kazandım! Annem çok sevindi 🙌</div>
+        <div class="comment">👤 <b>Ayşe K.</b> (1 gün önce): İlk başta şüphelendim ama işe yarıyor 😍</div>
+        <div class="comment">👤 <b>Furkan D.</b> (3 gün önce): Bunu herkesle paylaşın, süper bir kampanya!</div>
+      </div>
+    </div>
+
+    <div id="result">
+      <div class="warning">
+        ⚠️ Bu bir siber güvenlik farkındalık simülasyonuydu.<br><br>
+        Aşağıdaki bilgileri paylaştınız:
+        <ul id="sharedInfo"></ul>
+        Bu bilgiler kötü amaçlı kişiler tarafından kimlik avı, dolandırıcılık ve hedefli saldırılar için kullanılabilir.<br><br>
+        ❗ Gerçek bir hediye çekilişi sayfası:
+        <ul>
+          <li>HTTPS ile başlar (URL'de kilit simgesi olur)</li>
+          <li>Güvenilir bir alan adına sahip olur</li>
+          <li>Kişisel bilgileri rastgele istemez</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

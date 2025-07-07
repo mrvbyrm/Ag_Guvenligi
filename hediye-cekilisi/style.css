@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 1rem;
+}
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+h1 {
+  font-size: 1.8rem;
+  color: #333;
+}
+p {
+  color: #666;
+}
+input, button {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+button {
+  background: #00b894;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #019875;
+}
+#result {
+  display: none;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+.warning {
+  background-color: #ffeaa7;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #d35400;
+  font-weight: bold;
+}
+.comments {
+  margin-top: 2rem;
+  text-align: left;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+.comment {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.address-bar {
+  width: 100%;
+  background: #ccc;
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+.google-login-btn {
+  background-color: #4285f4;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  width: 100%;
+}
+.google-login-btn:hover {
+  background-color: #2d6cdf;
+}
+.comments-wrapper {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  animation: scrollComments 12s linear infinite;
+}
+
+@keyframes scrollComments {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
